@@ -2,7 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.conf import settings
 
-from . import models
+from . import forms, models
 
 
 def get_template_file(plugin_nickname, flavor):
@@ -10,6 +10,16 @@ def get_template_file(plugin_nickname, flavor):
     for choice in choices:
         if choice['flavor'] == flavor:
             return choice['template']
+
+
+@plugin_pool.register_plugin
+class SimplePageTeaserPlugin(CMSPluginBase):
+    model = models.SimplePageTeaserPluginModel
+    form = forms.SimplePageTeaserForm
+    cache = False
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_template_file('SimplePageTeaser', instance.flavor)
 
 
 @plugin_pool.register_plugin

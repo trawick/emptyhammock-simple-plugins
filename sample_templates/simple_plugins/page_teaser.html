@@ -1,0 +1,6 @@
+{% load article_tags %}
+<h2>{{ instance.title }}</h2>
+{% if instance.content %}
+    {{ instance.content }}
+{% endif %}
+<a href="{{ instance.page.get_absolute_url }}">More</a>
