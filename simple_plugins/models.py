@@ -27,12 +27,20 @@ def get_text_choices():
 
 
 class SimplePageTeaserPluginModel(CMSPlugin):
-    flavor = models.PositiveSmallIntegerField(blank=False, choices=lazy(get_page_teaser_choices, list)())
+    flavor = models.PositiveSmallIntegerField(blank=False)
     page = models.ForeignKey(Page, null=True, blank=False, on_delete=models.SET_NULL)
     override_title = models.CharField(max_length=80, blank=True)
     subtitle = models.CharField(max_length=80, blank=True)
     content = HTMLField(blank=True)
     image = FilerImageField(null=True, blank=True)
+
+    @staticmethod
+    def get_flavor_choices_fun():
+        return lazy(get_page_teaser_choices, list)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('flavor')._choices = self.get_flavor_choices_fun()()
 
     def __str__(self):
         return str(self.page)
@@ -43,21 +51,37 @@ class SimplePageTeaserPluginModel(CMSPlugin):
 
 
 class TextAndImagePluginModel(CMSPlugin):
-    flavor = models.PositiveSmallIntegerField(blank=False, choices=lazy(get_text_and_image_choices, list)())
-    title = models.CharField(max_length=80, blank=False)
+    flavor = models.PositiveSmallIntegerField(blank=False)
+    title = models.CharField(max_length=80, blank=True)
     subtitle = models.CharField(max_length=80, blank=True)
     content = HTMLField(blank=False)
     image = FilerImageField(null=False, blank=False)
+
+    @staticmethod
+    def get_flavor_choices_fun():
+        return lazy(get_text_and_image_choices, list)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('flavor')._choices = self.get_flavor_choices_fun()()
 
     def __str__(self):
         return self.title
 
 
 class SimpleTextPluginModel(CMSPlugin):
-    flavor = models.PositiveSmallIntegerField(blank=False, choices=lazy(get_text_choices, list)())
-    title = models.CharField(max_length=80, blank=False)
+    flavor = models.PositiveSmallIntegerField(blank=False)
+    title = models.CharField(max_length=80, blank=True)
     subtitle = models.CharField(max_length=80, blank=True)
     content = HTMLField(blank=False)
+
+    @staticmethod
+    def get_flavor_choices_fun():
+        return lazy(get_text_choices, list)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('flavor')._choices = self.get_flavor_choices_fun()()
 
     def __str__(self):
         return self.title

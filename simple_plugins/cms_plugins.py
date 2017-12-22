@@ -25,6 +25,7 @@ class SimplePageTeaserPlugin(CMSPluginBase):
 @plugin_pool.register_plugin
 class SimpleTextAndImagePlugin(CMSPluginBase):
     model = models.TextAndImagePluginModel
+    form = forms.SimpleTextAndImageForm
     cache = False
 
     def get_render_template(self, context, instance, placeholder):
@@ -34,6 +35,7 @@ class SimpleTextAndImagePlugin(CMSPluginBase):
 @plugin_pool.register_plugin
 class SimpleTextPlugin(CMSPluginBase):
     model = models.SimpleTextPluginModel
+    form = forms.SimpleTextForm
     cache = False
 
     def get_render_template(self, context, instance, placeholder):
