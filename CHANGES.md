@@ -1,5 +1,10 @@
 # Changes and migration requirements
 
+## Version 0.0.4
+
+### SimpleURLPlugin is added.  Declare
+`SIMPLE_CONTENT_SETTINGS['SimpleURLTeaser']` to define flavor choices.
+
 ## Version 0.0.3
 
 ### Requirements and URL changes

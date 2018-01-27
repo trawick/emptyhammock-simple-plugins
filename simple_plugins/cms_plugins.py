@@ -23,6 +23,16 @@ class SimplePageTeaserPlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
+class SimpleURLTeaserPlugin(CMSPluginBase):
+    model = models.SimpleURLTeaserPluginModel
+    form = forms.SimpleURLTeaserForm
+    cache = False
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_template_file('SimpleURLTeaser', instance.flavor)
+
+
+@plugin_pool.register_plugin
 class SimpleTextAndImagePlugin(CMSPluginBase):
     model = models.TextAndImagePluginModel
     form = forms.SimpleTextAndImageForm

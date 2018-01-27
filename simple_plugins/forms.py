@@ -30,6 +30,13 @@ class SimplePageTeaserForm(DynamicFlavorChoicesMixin, ModelForm):
         self.setup_flavor_choices()
 
 
+class SimpleURLTeaserForm(DynamicFlavorChoicesMixin, ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.setup_flavor_choices()
+
+
 class SimpleTextAndImageForm(DynamicFlavorChoicesMixin, ModelForm):
 
     def __init__(self, *args, **kwargs):
