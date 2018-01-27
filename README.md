@@ -1,6 +1,7 @@
 # Simple plugins for Django CMS
 
 * Teaser for CMS page
+* Teaser for URL (i.e., web page on another site)
 * Text plugin for small snippets of text
 * Text and image plugin
 
