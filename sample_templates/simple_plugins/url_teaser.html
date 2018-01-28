@@ -1,0 +1,5 @@
+{% load thumbnail %}
+{% if instance.image %}<img src="{% thumbnail instance.image 350x350 crop %}" alt="">{% endif %}
+<h2>{{ instance.title }}</h2>
+{{ instance.content }}
+<a href="{{ instance.url }}">More</a>
