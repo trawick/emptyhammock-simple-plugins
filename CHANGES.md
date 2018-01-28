@@ -1,5 +1,9 @@
 # Changes and migration requirements
 
+## Version 0.0.5
+
+### SimpleURLPlugin: Image is optional, just like with SimplePagePlugin
+
 ## Version 0.0.4
 
 ### SimpleURLPlugin is added.  Declare

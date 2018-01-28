@@ -60,7 +60,7 @@ class SimpleURLTeaserPluginModel(CMSPlugin):
     title = models.CharField(max_length=80, blank=True)
     subtitle = models.CharField(max_length=80, blank=True)
     content = HTMLField(blank=False)
-    image = FilerImageField(null=False, blank=False)
+    image = FilerImageField(null=True, blank=True)
 
     @staticmethod
     def get_flavor_choices_fun():
