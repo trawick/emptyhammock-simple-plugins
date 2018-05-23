@@ -44,6 +44,13 @@ class SimpleTextAndImageForm(DynamicFlavorChoicesMixin, ModelForm):
         self.setup_flavor_choices()
 
 
+class SimpleImageForm(DynamicFlavorChoicesMixin, ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.setup_flavor_choices()
+
+
 class SimpleTextForm(DynamicFlavorChoicesMixin, ModelForm):
 
     def __init__(self, *args, **kwargs):

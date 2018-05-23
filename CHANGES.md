@@ -1,12 +1,17 @@
 # Changes and migration requirements
 
+## Version 0.0.6
+
+* SimpleImagePlugin is added.  Declare
+`SIMPLE_CONTENT_SETTINGS['SimpleImagePlugin']` to define flavor choices.
+
 ## Version 0.0.5
 
-### SimpleURLPlugin: Image is optional, just like with SimplePagePlugin
+* SimpleURLPlugin: Image is optional, just like with SimplePagePlugin
 
 ## Version 0.0.4
 
-### SimpleURLPlugin is added.  Declare
+* SimpleURLPlugin is added.  Declare
 `SIMPLE_CONTENT_SETTINGS['SimpleURLTeaser']` to define flavor choices.
 
 ## Version 0.0.3
@@ -29,7 +34,7 @@ These no longer require `title` to be set, possibly affecting templates.
 
 ## Version 0.0.2
 
-### Simple Page Teaser plugin added
+* Simple Page Teaser plugin added
 
-You must now declare `SIMPLE_CONTENT_SETTINGS['SimplePageTeaser']` to
-define flavor choices.
+  You must now declare `SIMPLE_CONTENT_SETTINGS['SimplePageTeaser']` to
+  define flavor choices.

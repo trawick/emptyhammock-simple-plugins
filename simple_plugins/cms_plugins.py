@@ -43,6 +43,16 @@ class SimpleTextAndImagePlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
+class SimpleImagePlugin(CMSPluginBase):
+    model = models.SimpleImagePluginModel
+    form = forms.SimpleImageForm
+    cache = False
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_template_file('SimpleImage', instance.flavor)
+
+
+@plugin_pool.register_plugin
 class SimpleTextPlugin(CMSPluginBase):
     model = models.SimpleTextPluginModel
     form = forms.SimpleTextForm

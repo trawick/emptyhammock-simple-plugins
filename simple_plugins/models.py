@@ -26,6 +26,10 @@ def get_text_and_image_choices():
     return _get_choices('SimpleTextAndImage')
 
 
+def get_image_choices():
+    return _get_choices('SimpleImage')
+
+
 def get_text_choices():
     return _get_choices('SimpleText')
 
@@ -84,6 +88,24 @@ class TextAndImagePluginModel(CMSPlugin):
     @staticmethod
     def get_flavor_choices_fun():
         return lazy(get_text_and_image_choices, list)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('flavor')._choices = self.get_flavor_choices_fun()()
+
+    def __str__(self):
+        return self.title
+
+
+class SimpleImagePluginModel(CMSPlugin):
+    flavor = models.PositiveSmallIntegerField(blank=False)
+    title = models.CharField(max_length=80, blank=True)
+    subtitle = models.CharField(max_length=80, blank=True)
+    image = FilerImageField(null=False, blank=False)
+
+    @staticmethod
+    def get_flavor_choices_fun():
+        return lazy(get_image_choices, list)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
