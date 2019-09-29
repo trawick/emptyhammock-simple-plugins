@@ -1,5 +1,9 @@
 # Changes and migration requirements
 
+## unreleased
+
+* Support Django 2.2.
+
 ## Version 0.0.6
 
 * SimpleImagePlugin is added.  Declare
