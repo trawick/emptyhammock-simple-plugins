@@ -1,12 +1,12 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import autocomplete_views as autocomplete
 
 app_name = 'simple_plugins'
 
 urlpatterns = [
-    url(
-        r'^page-autocomplete/$',
+    path(
+        'page-autocomplete/',
         autocomplete.PageAutocomplete.as_view(),
         name='page-autocomplete',
     ),

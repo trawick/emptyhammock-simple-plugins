@@ -1,5 +1,9 @@
 # Changes and migration requirements
 
+## Version 0.0.8
+
+* Support Django 4.2.
+
 ## Version 0.0.7
 
 * Support Django 2.2.
